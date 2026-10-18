@@ -1,26 +1,116 @@
 @import "tailwindcss";
 
+/* Colour key from the wireframes: main action, good/selected, timer/talk, help/best idea, try next time. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f3f7ff;
+  --foreground: #172036;
+  --muted: #55607a;
+  --card: #ffffff;
+  --border: #d5def2;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-foreground: #ffffff;
+  --good: #15803d;
+  --good-soft: #dcfce7;
+  --timer: #c2410c;
+  --timer-soft: #ffedd5;
+  --help: #a16207;
+  --help-soft: #fef3c7;
+  --next: #6d28d9;
+  --next-soft: #ede9fe;
+  --against: #b91c1c;
+  --ring: #2563eb;
+  color-scheme: light;
+}
+
+/* Dark palette: follows the system unless the student picked a theme (data-theme on <html>). */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --background: #0d1220;
+    --foreground: #e8edfb;
+    --muted: #9aa6c4;
+    --card: #161d31;
+    --border: #2a3452;
+    --primary: #6ea0ff;
+    --primary-hover: #8fb5ff;
+    --primary-foreground: #0d1220;
+    --good: #4ade80;
+    --good-soft: #12301f;
+    --timer: #fb923c;
+    --timer-soft: #35200f;
+    --help: #facc15;
+    --help-soft: #33290b;
+    --next: #a78bfa;
+    --next-soft: #261c45;
+    --against: #f87171;
+    --ring: #8fb5ff;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --background: #0d1220;
+  --foreground: #e8edfb;
+  --muted: #9aa6c4;
+  --card: #161d31;
+  --border: #2a3452;
+  --primary: #6ea0ff;
+  --primary-hover: #8fb5ff;
+  --primary-foreground: #0d1220;
+  --good: #4ade80;
+  --good-soft: #12301f;
+  --timer: #fb923c;
+  --timer-soft: #35200f;
+  --help: #facc15;
+  --help-soft: #33290b;
+  --next: #a78bfa;
+  --next-soft: #261c45;
+  --against: #f87171;
+  --ring: #8fb5ff;
+  color-scheme: dark;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-good: var(--good);
+  --color-good-soft: var(--good-soft);
+  --color-timer: var(--timer);
+  --color-timer-soft: var(--timer-soft);
+  --color-help: var(--help);
+  --color-help-soft: var(--help-soft);
+  --color-next: var(--next);
+  --color-next-soft: var(--next-soft);
+  --color-against: var(--against);
+  --font-sans: var(--font-geist-sans), var(--font-devanagari), system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  font-size: 17px;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+}
+
+:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
